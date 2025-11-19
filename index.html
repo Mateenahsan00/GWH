@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grow with Hammad</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #1e003a, #0d001f);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #b47aff;
+    }
+
+    header .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      background: #6a0dad;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #8b3fff;
+    }
+
+    .main {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .main h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #caa8ff;
+    }
+
+    .main p {
+      font-size: 1.1rem;
+      color: #d8c7ff;
+      margin-bottom: 30px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 20px 30px;
+      min-width: 180px;
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      color: #b47aff;
+      margin-bottom: 5px;
+    }
+
+    /* Popup (Modal) Styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .modal-content {
+      background: #1a0030;
+      padding: 40px 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(176, 80, 255, 0.5);
+      animation: popup 0.3s ease;
+    }
+
+    @keyframes popup {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-content h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #b47aff;
+    }
+
+    .modal-content input {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #6a0dad;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .modal-content button:hover {
+      background: #8b3fff;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #b8a7ff;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #caa8ff;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>GROW WITH HAMMAD</h1>
+    <div class="buttons">
+      <button class="btn" id="loginBtn">Login</button>
+      <button class="btn" id="signupBtn">Sign Up</button>
+    </div>
+  </header>
+
+  <section class="main">
+    <h2>Learn. Invest. Grow — The Smart Way</h2>
+    <p>Empowering you to master crypto and invest with real confidence.</p>
+    <div class="stats">
+      <div class="stat-box"><h3>250K+</h3><p>Learners</p></div>
+      <div class="stat-box"><h3>$10M+</h3><p>Assets Managed</p></div>
+      <div class="stat-box"><h3>99.9%</h3><p>Secure Transactions</p></div>
+      <div class="stat-box"><h3>Real-Time</h3><p>Market Data</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Grow with Hammad. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+  </footer>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+      <h2>Welcome Back!</h2>
+      <input type="text" placeholder="Email or Username" />
+      <input type="password" placeholder="Password" />
+      <button>LOGIN</button>
+      <p style="margin-top:10px; text-align:center;">Don't have an account? <a href="#" onclick="switchModal('loginModal','signupModal')" style="color:#b47aff;">Sign up here</a></p>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div class="modal" id="signupModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
+      <h2>Create Your Account</h2>
+      <input type="text" placeholder="Full Name" />
+      <input type="email" placeholder="Email Address" />
+      <input type="password" placeholder="Password" />
+      <input type="password" placeholder="Confirm Password" />
+      <button>SIGN UP</button>
+      <p style="margin-top:10px; text-align:center;">Already have an account? <a href="#" onclick="switchModal('signupModal','loginModal')" style="color:#b47aff;">Log in here</a></p>
+    </div>
+  </div>
+
+  <script>
+    const loginModal = document.getElementById("loginModal");
+    const signupModal = document.getElementById("signupModal");
+
+    document.getElementById("loginBtn").onclick = () => {
+      loginModal.style.display = "flex";
+    };
+
+    document.getElementById("signupBtn").onclick = () => {
+      signupModal.style.display = "flex";
+    };
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    function switchModal(closeId, openId) {
+      document.getElementById(closeId).style.display = "none";
+      document.getElementById(openId).style.display = "flex";
+    }
+
+    window.onclick = function (event) {
+      if (event.target === loginModal) loginModal.style.display = "none";
+      if (event.target === signupModal) signupModal.style.display = "none";
+    };
+  </script>
+</body>
+</html>
+
